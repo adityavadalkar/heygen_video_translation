@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project implements a client library for HeyGen's video translation service as part of a technical assessment. The goal was to create a robust, production-ready client library that simulates interaction with a video translation service, focusing on efficient status polling and excellent developer experience.
+This project implements a client library for HeyGen's video translation service as part of a technical assessment. The goal was to create a robust, production-ready client library that simulates interaction with a video translation service, focusing on efficient status polling and improved developer experience in interacting with the translation server.
 
 ## Assessment Requirements and Implementation
 
@@ -11,7 +11,7 @@ This project implements a client library for HeyGen's video translation service 
 The project successfully implements all core requirements specified in the assessment:
 
 1. **Server Implementation**
-   We created a Flask-based server that simulates the video translation backend with configurable processing times. The server provides two key endpoints:
+   I created a Flask-based server that simulates the video translation backend with configurable processing times. The server provides two key endpoints:
    * POST /job: Creates a new translation job
    * GET /status: Returns the current status of a job (pending/completed/error)
 2. **Client Library**
@@ -28,38 +28,48 @@ The project successfully implements all core requirements specified in the asses
 
 ### Additional Features and Improvements
 
-Beyond the basic requirements, we implemented several advanced features to make the library more robust and production-ready:
+Beyond the basic requirements, I implemented several advanced features to make the library more robust and production-ready:
 
 1. **Advanced Polling Strategy**
+
    * Exponential backoff with configurable parameters
    * Jitter implementation to prevent thundering herd problems
    * Configurable timeout settings
    * Smart interval adjustment based on server response patterns
 2. **Circuit Breaker Pattern**
+
    * Automatic failure detection
    * Configurable failure thresholds
    * Self-healing mechanism with reset timeouts
    * Protection against cascade failures
 3. **Comprehensive Event System**
+
    * Real-time job status monitoring
    * Custom event handlers for different job states
    * Detailed event data for debugging and logging
    * Support for multiple event subscribers
 4. **Batch Operations Support**
+
    * Efficient handling of multiple translation jobs
    * Parallel status monitoring
    * Aggregate status reporting
    * Batch-specific error handling
 5. **Enhanced Error Handling**
+
    * Hierarchical error classification
    * Retryable vs. non-retryable error distinction
    * Detailed error reporting
    * Custom exception classes for different scenarios
-6. **Developer Experience**
-   * Fluent API design
-   * Comprehensive type hints
-   * Extensive documentation with examples
-   * Clear and consistent naming conventions
+
+
+## Setup and Installation
+
+1. Create and activate a virtual environment:
+
+```python
+python -m venv venv
+source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+```
 
 ## Installation
 
@@ -275,7 +285,3 @@ client.on(EventType.JOB_FAILED, monitor.on_failure)
 - `PollingConfig`: Controls polling behavior
 - `CircuitBreaker`: Manages failure handling
 - `EventHandler`: Manages event subscriptions
-
-## Support
-
-For issues, bugs, or feature requests, please create an issue in the GitHub repository. For urgent support, contact the HeyGen support team.
